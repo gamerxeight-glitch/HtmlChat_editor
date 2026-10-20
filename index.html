@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Offline tool: it makes no network requests. Opened files are parsed with DOMParser (inert: no scripts run, nothing loads). -->
+<title>DoRoleplay Chat Editor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <h1>DoRoleplay Chat Editor</h1>
+  <label class="btn primary">Open chat HTML…<input id="file" type="file" accept=".html,.htm,text/html" hidden></label>
+  <button id="undo" class="btn" disabled title="Undo (⌘Z)">Undo</button>
+  <button id="save" class="btn primary" disabled>Save edited copy</button>
+</header>
+
+<main id="empty" class="empty">
+  <p>Open a chat exported from the DoRoleplay app (Mac or iPhone), or an HTML export from the JanitorAI Chat Downloader.</p>
+  <p class="muted">Your original file is never changed. Saving writes a new <code>…-edited.html</code> that both apps import.</p>
+</main>
+
+<main id="editor" class="editor" hidden>
+  <section class="meta">
+    <div class="source" id="source"></div>
+    <label>Chat title <input id="title" class="input"></label>
+    <label>Character name <input id="charName" class="input"><span class="hint">The apps pre-select a character with this name.</span></label>
+    <label>Persona name (you) <input id="personaName" class="input"><span class="hint">Applied to every user message. The apps match or create a persona with this name.</span></label>
+  </section>
+
+  <section class="tools">
+    <div class="row">
+      <input id="find" class="input" placeholder="Find">
+      <input id="replace" class="input" placeholder="Replace with">
+      <label class="chk"><input id="matchCase" type="checkbox"> Match case</label>
+      <button id="replaceAll" class="btn">Replace all</button>
+      <span id="findCount" class="muted"></span>
+    </div>
+    <div class="row">
+      <button id="trim" class="btn">Tidy whitespace</button>
+      <button id="selectAll" class="btn">Select all</button>
+      <button id="selectNone" class="btn">Select none</button>
+      <button id="deleteSel" class="btn danger" disabled>Delete selected</button>
+      <span id="count" class="muted"></span>
+    </div>
+  </section>
+
+  <section id="issues" class="issues" hidden></section>
+  <ol id="list" class="list"></ol>
+  <button id="addEnd" class="btn add">+ Add message at end</button>
+</main>
+
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

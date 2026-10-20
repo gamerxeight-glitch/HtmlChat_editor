@@ -1,0 +1,10 @@
+{
+  "name": "doroleplay-chat-editor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone offline editor for DoRoleplay / JanitorAI chat HTML exports",
+  "scripts": {
+    "test": "node --test test/core.test.js"
+  },
+  "license": "MIT"
+}
